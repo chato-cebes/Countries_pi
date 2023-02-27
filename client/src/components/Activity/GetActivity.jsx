@@ -17,6 +17,7 @@ const GetActivity = () =>{
         {activity?.map((act)=>{
             return(
             <CardActivity
+            key={act.key}
             id={act.id}
             name={act.activityName}
             description={act.description}

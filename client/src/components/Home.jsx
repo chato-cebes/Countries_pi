@@ -21,6 +21,7 @@ const Home = () => {
       <div>
         <SearchBar/>
         <Link to="/activities"><button>Activities</button></Link>
+        <Link to="/contact"><button>Contact Us</button></Link>
         <br/>
       </div>
 
