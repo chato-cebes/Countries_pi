@@ -81,14 +81,14 @@ const handleClick = (e) =>{
   })
 }
 
-const [showDiv, setShowDiv] = useState(true);
+const [showDiv, setShowDiv] = useState(false);
 
   const handleDiv = ()=>{
     setShowDiv(true)
   }
 
   const disableButton = {};
-  if(input.activityName && input.description && input.difficulty && input.time && input.season && input.country.length){
+  if(!error.activityName && !error.description && !error.difficulty && !error.time && !error.season && !error.country ){
     disableButton.disabled = false;
   } else {
    disableButton.disabled = true;
@@ -131,12 +131,14 @@ useEffect(() => {
       <div>
         <label>Activity name: </label>
         <input type= 'text' name= 'activityName' value= {input.activityName} onChange={(e)=> handleChange(e)}/>
+        {error.activityName && <p style={{color: 'red'}}>{error.activityName}</p>}
         <br/><br/>
       </div>
       
       <div>
         <label>Write a little description of {input.activityName}: </label>
         <input type= 'text' name= 'description' value= {input.description} onChange={(e)=> handleChange(e)}/>
+        {error.description && <p style={{color: 'red'}}>{error.description}</p>}
         <br/><br/>
       </div>
       
@@ -150,12 +152,14 @@ useEffect(() => {
         <label>3<input type="radio" id="three" name="difficulty" value="3" onChange={(e)=> handleCheck(e)}/></label>
         <label>4<input type="radio" id="four" name="difficulty" value="4" onChange={(e)=> handleCheck(e)}/></label>
         <label>5<input type="radio" id="five" name="difficulty" value="5" onChange={(e)=> handleCheck(e)}/></label>
+        {error.difficulty && <p style={{color: 'red'}}>{error.difficulty}</p>}
         <br/><br/>
       </div>
     
       <div>
         <label>Time in hours spent on this activity: </label>
         <input type= 'text' name= 'time' value= {input.time} onChange={(e)=>handleChange(e)} placeholder= "HH:MM"/>
+        {error.time && <p style={{color: 'red'}}>{error.time}</p>}
         <br/><br/>
         </div>
         
@@ -165,47 +169,45 @@ useEffect(() => {
         <label><input type= 'radio' id= 'Autumn' name= "season" value= 'Autumn' onChange={(e)=> handleCheck(e)}/>Autumn</label>
         <label><input type= 'radio' id= 'Winter' name= "season" value= 'Winter' onChange={(e)=> handleCheck(e)}/>Winter</label>
         <label><input type= 'radio' id= 'Spring' name= "season" value= 'Spring' onChange={(e)=> handleCheck(e)}/>Spring</label>
+        {error.season && <p style={{color: 'red'}}>{error.season}</p>}
         <br/><br/>
       </div>
 
       <div>
         <label>Where is located this activity: </label>
-        <select value ="default" onChange={(e)=> handleSelect(e)} required >
+        <select value ="default" onChange={(e)=> handleSelect(e)}>
         <option value="default" disabled>Choose any country------ </option>
           {regions.map((reg)=> {
             return(
               <optgroup key={reg} label= {reg}>
             {countries.map((c) => {
               if (c.region === reg){
-              return( 
-                  
+              return(           
                   <option key={c.key} value={c.name}>{c.name} {c.flagIcon}</option>
               )
               }})}
               </optgroup>
           )})}
         </select>
+        {error.country && <p style={{color: 'red'}}>{error.country}</p>}
         <button onClick={(e)=> handleClick(e)}>undo</button>
         <br/><br/>
       </div>
 
       <div>
-        <button type="submit" {...disableButton}>Create activity</button>
+        <button type="submit" {...disableButton} onClick={handleDiv}>Create activity</button>
         <br/><br/>
       </div>
       </form>
 
 
-        {showDiv && 
+        {/* {showDiv && 
           <div>
-          <li key={error.activityName}>{error.activityName && <p style={{color: 'red'}}>{error.activityName}</p>}</li>
-          <li key={error.description}>{error.description && <p style={{color: 'red'}}>{error.description}</p>}</li>
-          <li key={error.difficulty}>{error.difficulty && <p style={{color: 'red'}}>{error.difficulty}</p>}</li>
-          <li key={error.time}>{error.time && <p style={{color: 'red'}}>{error.time}</p>}</li>
-          <li key={error.season}>{error.season && <p style={{color: 'red'}}>{error.season}</p>}</li>
-          <li key={error.country}>{error.country && <p style={{color: 'red'}}>{error.country}</p>}</li>
+          
+          
+          
           </div>
-        }
+        } */}
 
       <div>
           {input.country.map((c)=> 

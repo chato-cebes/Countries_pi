@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_ACTIVITIES, GET_ALL_COUNTRIES, GET_COUNTRY_BY_ID, GET_COUNTRY_BY_QUERY } from "./actionTypes";
+import { FILTER_REGION, FILTER_SEASON, GET_ACTIVITIES, GET_ALL_COUNTRIES, GET_COUNTRY_BY_ID, GET_COUNTRY_BY_QUERY, ORDER_COUNTRY, ORDER_POBLATION } from "./actionTypes";
 
 export const getCountries = () => {
     return async function(dispatch){
@@ -38,3 +38,22 @@ export const createActivity = (obj) => {
         return response
     }
 }
+
+export const filterRegion = (region) => {
+    return {type: FILTER_REGION, payload: region };
+  };
+
+  export const filterSeason = (season) => {
+    return {type: FILTER_SEASON, payload: season };
+  };
+  
+  export const orderCountry = (name) => {
+    return { type: ORDER_COUNTRY, payload: name 
+    };
+  };
+  
+  export const orderPoblation = (numero) => {
+    return { type: ORDER_POBLATION, payload: numero 
+    };
+  };
+  

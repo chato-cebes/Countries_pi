@@ -4,9 +4,9 @@ import { useEffect } from "react"
 import { getActivities } from "../../Redux/actions/actions"
 import CardActivity from "./ActivityCard"
 
-const GetActivity = () =>{
+const GetActivity = ({activity}) =>{
     const dispatch = useDispatch()
-    const activity = useSelector((state)=>state.activities)
+    
 
     useEffect(()=>{
         dispatch(getActivities())
@@ -14,10 +14,11 @@ const GetActivity = () =>{
     
     return(
         <div>
-        {activity?.map((act)=>{
+        {activity&&
+            activity.map((act)=>{
             return(
             <CardActivity
-            key={act.key}
+            key={act.id}
             id={act.id}
             name={act.activityName}
             description={act.description}

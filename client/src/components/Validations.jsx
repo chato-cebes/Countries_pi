@@ -23,7 +23,11 @@ if (!input.activityName){
 }
 
 if (!input.description){
-    error.description = "Please, write a little description about Activity"
+    error.description = "Please, write a description about Activity"
+}
+
+if (input.description.length > 10 && input.description.length < 20){
+    error.description = "A bigger description will be greater"
 }
 
 if (!input.difficulty){

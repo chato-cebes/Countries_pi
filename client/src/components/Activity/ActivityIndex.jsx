@@ -2,8 +2,10 @@ import GetActivity from "./GetActivity";
 import PostActivity from "./PostActivity";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const ActivitiIndex = () => {
+  const activity = useSelector((state)=>state.activities)
   const [visible, setVisible] = useState("");
 
   const handleClick = (e) => {
@@ -20,11 +22,11 @@ const ActivitiIndex = () => {
         </div>
 
         <div>
-          <h1>DO YOU WANTO TO ...</h1>
+        <h1>DO YOU WANTO TO ...</h1>
           <button name="list" onClick={(e) => handleClick(e)}>See Activities</button>
           <button name="create" onClick={(e) => handleClick(e)}>Create</button>
-          <button name="create" onClick={(e) => handleClick(e)}>Modify</button>
-          <button name="create" onClick={(e) => handleClick(e)}>Delete</button>
+          <button name="modify" onClick={(e) => handleClick(e)}>Modify</button>
+          <button name="delete" onClick={(e) => handleClick(e)}>Delete</button>
         </div>
 
       </div>
@@ -32,7 +34,7 @@ const ActivitiIndex = () => {
       {visible === "list" ? (
         <div>
           <h2>List</h2>
-          <GetActivity />
+          <GetActivity activity={activity}/>
         </div>
       ) : visible === "create" ? (
         <div>
