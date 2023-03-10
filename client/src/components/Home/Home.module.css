@@ -1,0 +1,43 @@
+.marco{
+    display: flex - inline;
+    flex-direction: column;
+    width: 95%;
+    max-height: fit-content;
+    border:2px solid #000000;
+    margin-left: 30px;
+}
+
+.filtros{
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
+    display: flex - inline;
+    color: #2a1e1e;
+    padding: 10px 20px;    
+}
+
+.Card{
+
+    display: flex;
+    row-gap: 2rem;
+    align-items:flex-end;
+    width: fit-content;
+
+
+}
+
+
+.pagina{
+    background-color: #f3f3f3;
+    border-left: #2a1e1e;
+    border-right: #2a1e1e;
+    border-bottom: #2a1e1e;
+
+}
+.space{
+    display: inline-flexbox;
+    padding: 5px 20px;
+    margin: 0rem 1rem 0 1rem;    
+
+
+    
+}

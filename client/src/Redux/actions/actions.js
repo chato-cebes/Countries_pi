@@ -35,7 +35,9 @@ export const getActivities = () => {
 export const createActivity = (obj) => {
     return async function(){
         let response = await axios.post('http://localhost:3001/activities', obj)
-        return response
+        console.log(response);
+        return response.data.message
+        
     }
 }
 

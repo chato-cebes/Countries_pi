@@ -1,6 +1,9 @@
+import style from "./Activities.module.css";
+
+
 const ActivityCard = ({id, name, description, difficulty, time, season, countries}) => {
   return (
-    <div>
+    <div className={style.cardActtivity}>
       <details>
         <summary><b>Name:</b> {name}</summary>
         <p><b>id:</b> {id}</p>

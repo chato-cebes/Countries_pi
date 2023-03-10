@@ -24,7 +24,7 @@ const createPost = async (
     });
 
     newPost.addCountry(findcountry);
-    return 
+    return ("activity created succesfully")
 
   } catch (error) {
     return { error: error.message };

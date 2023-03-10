@@ -1,0 +1,62 @@
+.onecard{
+    display: inline-flex;
+    flex-direction: column;
+    text-align: center;
+    border: 2px solid rgb(143, 143, 163);
+    margin: 2rem;
+    height: 250px;
+    width: fit-content;
+}
+
+.flag{
+    height: fit-content;
+    width: 50%;
+    object-fit: contain;
+    border: 2px solid grey;
+}
+
+
+.cards{
+    
+    height: 100%;
+    width: fit-content;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 2rem;
+
+
+}
+/* 
+justify-content: space-around;
+gap: 1rem ;
+
+    width: fit-content;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    height: 100%;
+    background-color: #93acf1;
+    color: black;
+    border: 1px whitesmoke;
+    border-radius: 2rem;
+ */
+
+ /* 
+ display: flex;
+ flex-direction: row;
+    align-items: center;
+
+    padding-left: 2rem;
+    padding-right: 2rem;
+    height: 100%;
+    background-color: #93acf1;
+    color: black;
+    border: 1px whitesmoke;
+    border-radius: 2rem;
+    gap: 1rem ;
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
+    display: flex - inline;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+ */

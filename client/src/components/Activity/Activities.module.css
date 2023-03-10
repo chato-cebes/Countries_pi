@@ -1,0 +1,32 @@
+.cardActtivity{
+    display: flex;
+    height: 100%;
+    width: 80%;
+    margin-left: 10%;
+    align-content: space-around;
+
+}
+.name{
+display: flex;
+    background-color: crimson;
+height: fit-content;
+width: fit-content;
+justify-content: center;
+margin-left: 37%;
+}
+
+.buttons{
+display: inline-block;
+justify-content: space-between;
+align-items: center;
+gap: 4rem;
+margin: 1rem;
+width: 15rem;
+
+}
+
+.buttons:hover, input[type="submit"]:focus {
+        background-color: #fcff39;
+        color: #100dd4;
+
+}

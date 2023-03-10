@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
-import Validations from "./Validations";
+import Validations from "../Validations/Validations";
+import style from "./Contact.module.css"
 
 const Contact = () => {
     const navigate = useNavigate()
@@ -58,42 +59,38 @@ const Contact = () => {
 
   return (
     <div>
-      <div>
-        <Link to="/home"><button>Back</button></Link>
-        <br/><br/>
-      </div>
 
       <form onSubmit={(e) => handleSubmit(e)}>
-        <div>
-          <label>Name: </label>
-          <input type="text" name="name" value={input.name} onChange={(e) => handleChange(e)}/>
+        <div className={style.inputlabel} >
+          <label className={style.label}>Name: </label>
+          <input className={style.input} type="text" name="name" value={input.name} onChange={(e) => handleChange(e)}/>
+          <br />
+          <br />
+        </div>
+
+        <div className={style.inputlabel} >
+          <label className={style.label}>Lastname: </label>
+          <input className={style.input} type="text" name="lastname" value={input.lastname} onChange={(e) => handleChange(e)}/>
+          <br />
+          <br />
+        </div>
+
+        <div className={style.inputlabel} >
+          <label className={style.label}>E-mail: </label>
+          <input className={style.input} type="text" name="mail" value={input.mail} onChange={(e) => handleChange(e)}/>
+          <br />
+          <br />
+        </div>
+
+        <div className={style.inputlabel} >
+          <label className={style.label}>Comments: </label>
+          <input className={style.input} type="text" name="comments" value={input.comments} onChange={(e) => handleChange(e)}/>
           <br />
           <br />
         </div>
 
         <div>
-          <label>Lastname: </label>
-          <input type="text" name="lastname" value={input.lastname} onChange={(e) => handleChange(e)}/>
-          <br />
-          <br />
-        </div>
-
-        <div>
-          <label>E-mail: </label>
-          <input type="text" name="mail" value={input.mail} onChange={(e) => handleChange(e)}/>
-          <br />
-          <br />
-        </div>
-
-        <div>
-          <label>Comments: </label>
-          <input type="text" name="comments" value={input.comments} onChange={(e) => handleChange(e)}/>
-          <br />
-          <br />
-        </div>
-
-        <div>
-          <button type="submit" onClick={handleDiv}>Commit!</button>
+          <button className={style.Button} type="submit" onClick={handleDiv}>Commit!</button>
           {showDiv && 
           <div>
             <li key={error.name}>{error.name && <p style={{color: 'red'}}>{error.name}</p>}</li>

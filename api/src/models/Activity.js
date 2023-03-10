@@ -31,8 +31,8 @@ module.exports = (sequelize) =>{
         /* country: {
             type: DataTypes.ARRAY(DataTypes.STRING),
             allowNull: false 
-        },
-        */
+        }, */
+        
     },
     {
         timestamps : false,

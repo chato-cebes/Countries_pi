@@ -1,10 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { getCountries, filterRegion, filterSeason, orderCountry, orderPoblation, getActivities } from "../Redux/actions/actions";
-import { Link } from "react-router-dom";
-import SearchBar from "./SearchBar.jsx";
-import Paginado from "./Paginado";
-import Allcards from "./Country/Allcards"
+import { getCountries, filterRegion, filterSeason, orderCountry, orderPoblation, getActivities } from "../../Redux/actions/actions";
+import Paginado from "../Paginado/Paginado";
+import Allcards from "../Country/Allcards"
+import style from "./Home.module.css";
+
+
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -53,23 +54,17 @@ const Home = () => {
 
 
   return (
-    <div>
-      <div>
-        <SearchBar />
-        <Link to="/activities"><button>Activities</button></Link>
-        <Link to="/contact"><button>Contact Us</button></Link>
-        <br />
-        <br />
-      </div>
-      <div>
-          <label>Country: 
-          <button value="ascendente" onClick={(e)=>handleCountryOrder(e)}>Ascendente</button>
-          <button value="descendente" onClick={(e)=>handleCountryOrder(e)}>Descendente</button></label>
-          <label>population: 
-          <button value="ascendente" onClick={(e)=>handlePoblationOrder(e)}>Ascendente</button>
-          <button value="descendente" onClick={(e)=>handlePoblationOrder(e)}>Descendente</button></label>
+    <div className={style.marco}>
+      
+    <div className={style.filtros}>
+        <label>Country: 
+        <button className={style.space} value="ascendente" onClick={(e)=>handleCountryOrder(e)}>Ascendente</button>
+        <button className={style.space} value="descendente" onClick={(e)=>handleCountryOrder(e)}>Descendente</button></label>
+        <label>population: 
+        <button className={style.space} value="ascendente" onClick={(e)=>handlePoblationOrder(e)}>Ascendente</button>
+        <button className={style.space} value="descendente" onClick={(e)=>handlePoblationOrder(e)}>Descendente</button></label>
 
-        <select onChange={(e)=>handleRegion(e)} value= "default">
+        <select className={style.space} onChange={(e)=>handleRegion(e)} value= "default">
         <option value="default" disabled>Regions</option>
         <option value="allregions">All</option>
         <option value="Africa">Africa</option>
@@ -80,7 +75,7 @@ const Home = () => {
         <option value="Oceania">Oceania</option>
         </select>
 
-        <select onChange={(e)=>handleSeason(e)} value="default">
+        <select className={style.space} onChange={(e)=>handleSeason(e)} value="default">
         <option value="default" disabled>Season</option>
         <option value="allseasons">All</option>
         <option value="Summer">Summer</option>
@@ -88,13 +83,14 @@ const Home = () => {
         <option value="Winter">Winter</option>
         <option value="Spring">Spring</option>
         </select>
+    </div>
 
       <Paginado 
       cardPerPage= {cardPerPage}
       countryState= {countryState}
       paginado= {paginado}/>
-      </div>
-      
+
+
       <Allcards currentCard= {currentCard}/>
     </div>
   );

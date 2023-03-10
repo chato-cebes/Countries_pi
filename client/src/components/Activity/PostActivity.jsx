@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createActivity, getCountries } from "../../Redux/actions/actions";
 import CountryCard from "../Country/CountryCard";
-import Validations from "../Validations";
+import Validations from "../Validations/Validations";
 
 
 const PostActivity = () => {
@@ -127,7 +127,8 @@ useEffect(() => {
 
   return (
     <div>
-      <form onSubmit={(e)=> handleSubmit(e)}>
+    
+    <form onSubmit={(e)=> handleSubmit(e)}>
       <div>
         <label>Activity name: </label>
         <input type= 'text' name= 'activityName' value= {input.activityName} onChange={(e)=> handleChange(e)}/>

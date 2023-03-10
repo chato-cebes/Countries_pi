@@ -1,4 +1,5 @@
 import React from "react";
+import style from "./Paginado.module.css"
 
 const Paginado = ({ cardPerPage, countryState, paginado }) => {
   
@@ -9,13 +10,11 @@ const Paginado = ({ cardPerPage, countryState, paginado }) => {
 }
 
   return (
-      <nav>
       <ul>
           {pageNumber &&
-          pageNumber.map((numero)=> <a key={numero} onClick={()=>paginado(numero)}> {numero} </a>)
+          pageNumber.map((numero)=> <a className={style.numero} key={numero} onClick={()=>paginado(numero)}> {numero} </a>)
           }
       </ul>
-      </nav>
   );
 };
 

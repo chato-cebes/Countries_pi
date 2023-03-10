@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import { getCountryByQuery } from "../Redux/actions/actions"
+import { getCountryByQuery } from "../../Redux/actions/actions"
 
 
 const SearchBar = () => {
@@ -18,6 +18,7 @@ const SearchBar = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(getCountryByQuery(name))
+        
     }
 
 

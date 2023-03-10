@@ -109,3 +109,37 @@ const reducer = (state = initialState, action) => {
 };
 
 export default reducer;
+
+/* let populationforSort = (action.payload === "ascendente")?
+      
+        state.countries.sort((num1, num2) => {
+        const a = num1.population.split(".").map((conpop) => parseInt(conpop)).join("");
+        const b = num2.population.split(".").map((conpop) => parseInt(conpop)).join("");
+
+        for ( let i = 0; i < Math.max(a.length, b.length); i++ ) {
+          if (a[i] === undefined) {
+            return -1;
+          } else if (b[i] === undefined) {
+            return 1;
+          } else if (a[i] < b[i]) {
+            return -1;
+          } else if (a[i] > b[i]) {
+            return 1;
+          }
+        }
+
+        return 0;
+      }): state.countries.sort((num1, num2) => {
+        const a = num1.population.split(".").map((conpop) => parseInt(conpop));
+        const b = num2.population.split(".").map((conpop) => parseInt(conpop));
+
+        for ( let i = 0; i < Math.max(a.length, b.length); i++ ) {
+        if (a[i] > b[i]) {
+            return -1;
+          } else if (a[i] < b[i]) {
+            return 1;
+          }
+        
+        }
+        return 0;
+      }) */
