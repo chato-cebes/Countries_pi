@@ -1,14 +1,10 @@
 const { Activity, Country } = require("../../../db");
 
-const createPost = async (
-  activityName,
-  description,
-  difficulty,
-  time,
-  season,
-  country
-) => {
+const createPost = async ( activityName, description, difficulty, time, season, country ) => {
   try {
+
+    if (!activityName|| !description|| !difficulty|| !time|| !season|| !country) throw new Error("Information incomplete")
+
     const newPost = await Activity.create({
       activityName,
       description,
