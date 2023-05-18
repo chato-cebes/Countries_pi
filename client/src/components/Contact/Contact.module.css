@@ -1,45 +1,38 @@
-.label{
-background-color: #00df8d;
-margin: 10rem 1rem 0 1rem;
-padding: 5px;
-width: fit-content;
-
+.label {
+  background-color: #00df8d;
+  margin: 10rem 1rem 0 1rem;
+  padding: 5px;
+  width: fit-content;
 }
 
-
-.input{
-    
-    margin: 1rem 1rem 1em 4rem;
-    width: 300px;
-    height: 20px;
-
-    
+.input {
+  margin: 1rem 1rem 1em 4rem;
+  width: 300px;
+  height: 20px;
 }
 
-
-.inputlabel{
-    display: inline-block;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    margin: 10px;
-    align-content: flex-start;
-    text-align: left;
+.inputlabel {
+  display: inline-block;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin: 10px;
+  align-content: flex-start;
+  text-align: left;
 }
 
-.Button{
-    border: 3px solid #fffeb3;
-    background-color: #0e042b;
-    border-radius: 5px;
-    padding: 10px 2em;
-    font-weight: bold;
-    color: #fff;
+.Button {
+  border: 3px solid #fffeb3;
+  background-color: #0e042b;
+  border-radius: 5px;
+  padding: 10px 2em;
+  font-weight: bold;
+  color: #fff;
 }
 
-.Button:hover, input[type="submit"]:focus {
-        background-color: #596da5;
-
+.Button:hover,
+input[type="submit"]:focus {
+  background-color: #596da5;
 }
-
 
 /* 
 
@@ -49,7 +42,7 @@ width: fit-content;
     border-radius: 2rem;
  */
 
- /* 
+/* 
  flex-direction: row;
     align-items: center;
 

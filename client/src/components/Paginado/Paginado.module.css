@@ -1,49 +1,17 @@
-.numero{
-    
-    border: 1px solid #e7e7e7;
-    background-color: #f3f3f3;
-    display: flex - inline;
-    color: rgb(56, 49, 49);
-    padding: 10px;
-    border-radius: 0.3rem;    
+.ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* 
-gap: 1rem ;
-justify-content: space-around;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    width: fit-content;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    height: 100%;
-    background-color: #93acf1;
-    color: black;
-    border: 1px whitesmoke;
-    border-radius: 2rem;
- */
-
- /* 
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-
-    width: fit-content;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    height: 100%;
-    background-color: #93acf1;
-    color: black;
-    border: 1px whitesmoke;
-    border-radius: 2rem;
-    gap: 1rem ;
-    border: 1px solid #e7e7e7;
-    background-color: #f3f3f3;
-    display: flex - inline;
-    color: white;
-    text-align: center;
-    padding: 10px 20px;
- */
+.numero {
+  display: flex;
+  color: black;
+  border: 1px solid black;
+  width: 30px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  margin: 1px;
+}

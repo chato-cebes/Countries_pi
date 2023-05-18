@@ -1,42 +1,76 @@
 import React from "react";
-import SearchBar from "../SearchBar/SearchBar";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import SearchBar from "../SearchBar/SearchBar";
 
-const Ul = styled.ul`
-  border: 1px solid #e7e7e7;
-  background-color: #f3f3f3;
+const Ul = styled.div`
+  width: 70%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
-const Li = styled.li`
-  display: flex - inline;
-  color: white;
-  text-align: center;
-  padding: 10px 20px;
+const Bar = styled.div`
+  width: 30%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Li = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  .btn {
+    width: 150px;
+    height: 35px;
+    border-radius: 10px;
+    font-size: medium;
+  }
+`;
+
+const NavBar = styled.nav`
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: space-around;
+  position: sticky;
+  top: 0;
+  background-color: #000000;
 `;
 
 const Nav = () => {
   return (
-    <nav>
-    
+    <NavBar>
       <Ul>
         <Li>
-          <Link to="/home"><button>Home</button></Link>
+          <Link to="/home">
+            <button className="btn">Home</button>
+          </Link>
         </Li>
         <Li>
-          <Link to="/activities"><button>Activities</button></Link>
+          <Link to="/activities">
+            <button className="btn">Activities</button>
+          </Link>
         </Li>
         <Li>
-          <Link to="/contact"><button>Contact Us</button></Link>
+          <Link to="/contact">
+            <button className="btn">Contact Us</button>
+          </Link>
         </Li>
         <Li>
-          <Link to="/about"><button>About</button></Link>
-        </Li>
-        <Li>
-          <SearchBar/>
+          <Link to="/about">
+            <button className="btn">About</button>
+          </Link>
         </Li>
       </Ul>
-    </nav>
+      <Bar>
+        <SearchBar />
+      </Bar>
+    </NavBar>
   );
-}
-export default Nav
+};
+export default Nav;

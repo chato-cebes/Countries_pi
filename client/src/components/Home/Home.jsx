@@ -1,97 +1,138 @@
-import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { getCountries, filterRegion, filterSeason, orderCountry, orderPoblation, getActivities } from "../../Redux/actions/actions";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  filterRegion,
+  filterSeason,
+  getActivities,
+  getCountries,
+  orderCountry,
+  orderPoblation,
+} from "../../Redux/actions/actions";
+import Allcards from "../Country/Allcards";
 import Paginado from "../Paginado/Paginado";
-import Allcards from "../Country/Allcards"
 import style from "./Home.module.css";
-
-
 
 const Home = () => {
   const dispatch = useDispatch();
-  const countryState = useSelector((state) => state.countries);  
+  const countryState = useSelector((state) => state.countries);
 
-    //paginado
-    const [currentPage, setCurrentPage] = useState(1);
-    const [cardPerPage, setCardPerPage] = useState(10);
-    const [order, setOrder] = useState("");
-    const indexLastCard = currentPage * cardPerPage;
-    const indexFirstCard = indexLastCard - cardPerPage;
-    const currentCard = countryState.slice(indexFirstCard, indexLastCard);
-    
-    const paginado = (pagNumber) => {
-        setCurrentPage(pagNumber);
-    };
-  
-    const handleRegion= (e)=>{
-      dispatch(filterRegion(e.target.value))
-}
-    const handleSeason= (e)=>{
-      dispatch(filterSeason(e.target.value))
+  //paginado
+  const [currentPage, setCurrentPage] = useState(1);
+  const [cardPerPage, setCardPerPage] = useState(10);
+  const [order, setOrder] = useState("");
+  const indexLastCard = currentPage * cardPerPage;
+  const indexFirstCard = indexLastCard - cardPerPage;
+  const currentCard = countryState.slice(indexFirstCard, indexLastCard);
 
-}
-    const handleCountryOrder= (e)=>{
-      e.preventDefault()
-      dispatch(orderCountry(e.target.value))
-      setCurrentPage(1)
-      setOrder(`Ordered ${e.target.value}`)
-}
-    const handlePoblationOrder= (e)=>{
-      e.preventDefault()
-      dispatch(orderPoblation(e.target.value))
-      setCurrentPage(1)
-      setOrder(`Ordered ${e.target.value}`)
-}
+  const paginado = (pagNumber) => {
+    setCurrentPage(pagNumber);
+  };
 
-  
+  const handleRegion = (e) => {
+    dispatch(filterRegion(e.target.value));
+  };
+  const handleSeason = (e) => {
+    dispatch(filterSeason(e.target.value));
+  };
+  const handleCountryOrder = (e) => {
+    e.preventDefault();
+    dispatch(orderCountry(e.target.value));
+    setCurrentPage(1);
+    setOrder(`Ordered ${e.target.value}`);
+  };
+  const handlePoblationOrder = (e) => {
+    e.preventDefault();
+    dispatch(orderPoblation(e.target.value));
+    setCurrentPage(1);
+    setOrder(`Ordered ${e.target.value}`);
+  };
 
   //Once Home component starts, this hook do a petition to action for get the information from back
   useEffect(() => {
     dispatch(getCountries());
     dispatch(getActivities());
-    
   }, [dispatch]);
-
 
   return (
     <div className={style.marco}>
-      
-    <div className={style.filtros}>
-        <label>Country: 
-        <button className={style.space} value="ascendente" onClick={(e)=>handleCountryOrder(e)}>Ascendente</button>
-        <button className={style.space} value="descendente" onClick={(e)=>handleCountryOrder(e)}>Descendente</button></label>
-        <label>population: 
-        <button className={style.space} value="ascendente" onClick={(e)=>handlePoblationOrder(e)}>Ascendente</button>
-        <button className={style.space} value="descendente" onClick={(e)=>handlePoblationOrder(e)}>Descendente</button></label>
+      <div className={style.filtros}>
+        <div className={style.titleSelect}>
+          <label>Country:</label>
+          <button
+            className={style.space}
+            value="ascendente"
+            onClick={(e) => handleCountryOrder(e)}
+          >
+            Ascendente
+          </button>
+          <button
+            className={style.space}
+            value="descendente"
+            onClick={(e) => handleCountryOrder(e)}
+          >
+            Descendente
+          </button>
+        </div>
+        <div className={style.titleSelect}>
+          <label>Population:</label>
+          <button
+            className={style.space}
+            value="ascendente"
+            onClick={(e) => handlePoblationOrder(e)}
+          >
+            Ascendente
+          </button>
+          <button
+            className={style.space}
+            value="descendente"
+            onClick={(e) => handlePoblationOrder(e)}
+          >
+            Descendente
+          </button>
+        </div>
+        <div className={style.title}>
+          <select
+            className={style.space}
+            onChange={(e) => handleRegion(e)}
+            value="default"
+          >
+            <option value="default" disabled>
+              Regions
+            </option>
+            <option value="allregions">All</option>
+            <option value="Africa">Africa</option>
+            <option value="Americas">Americas</option>
+            <option value="Antarctic">Antarctic</option>
+            <option value="Asia">Asia</option>
+            <option value="Europe">Europe</option>
+            <option value="Oceania">Oceania</option>
+          </select>
+        </div>
+        <div className={style.title}>
+          <select
+            className={style.space}
+            onChange={(e) => handleSeason(e)}
+            value="default"
+          >
+            <option value="default" disabled>
+              Season
+            </option>
+            <option value="allseasons">All</option>
+            <option value="Summer">Summer</option>
+            <option value="Autumn">Autumn</option>
+            <option value="Winter">Winter</option>
+            <option value="Spring">Spring</option>
+          </select>
+        </div>
+      </div>
 
-        <select className={style.space} onChange={(e)=>handleRegion(e)} value= "default">
-        <option value="default" disabled>Regions</option>
-        <option value="allregions">All</option>
-        <option value="Africa">Africa</option>
-        <option value="Americas">Americas</option>
-        <option value="Antarctic">Antarctic</option>
-        <option value="Asia">Asia</option>
-        <option value="Europe">Europe</option>
-        <option value="Oceania">Oceania</option>
-        </select>
+      <Paginado
+        cardPerPage={cardPerPage}
+        countryState={countryState}
+        paginado={paginado}
+      />
 
-        <select className={style.space} onChange={(e)=>handleSeason(e)} value="default">
-        <option value="default" disabled>Season</option>
-        <option value="allseasons">All</option>
-        <option value="Summer">Summer</option>
-        <option value="Autumn">Autumn</option>
-        <option value="Winter">Winter</option>
-        <option value="Spring">Spring</option>
-        </select>
-    </div>
-
-      <Paginado 
-      cardPerPage= {cardPerPage}
-      countryState= {countryState}
-      paginado= {paginado}/>
-
-
-      <Allcards currentCard= {currentCard}/>
+      <Allcards currentCard={currentCard} />
     </div>
   );
 };

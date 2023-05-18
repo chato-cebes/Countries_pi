@@ -27,17 +27,17 @@ const ActivityCard = ({
         </summary>
         <div className={style.title2}>
           <div className={style.h2}>
-            <b>Dificultty:</b> {difficulty},
+            <b>Dificultty:</b> {difficulty}
           </div>
           <div className={style.h2}>
-            <b>Time:</b> {time}(HH:MM),{" "}
+            <b>Time:</b> {time} (HH:MM)
           </div>
           <div className={style.h2}>
             <b>Season:</b> {season}
           </div>
         </div>
         <p>
-          <b>description:</b> {description}
+          <b>Description:</b> {description}
         </p>
       </details>
     </div>
