@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createActivity, getCountries } from "../../Redux/actions/actions";
-import CountryCard from "../Country/CountryCard";
 import Validations from "../Validations/Validations";
+import style from "./Activities.module.css";
 
 const PostActivity = () => {
   const dispatch = useDispatch();
@@ -60,10 +60,14 @@ const PostActivity = () => {
   };
 
   const handleSelect = (e) => {
-    setInput({
-      ...input,
-      country: [...input.country, e.target.value],
-    });
+    if (input.country.includes(e.target.value)) {
+      alert("This Country is already selected");
+    } else {
+      setInput({
+        ...input,
+        country: [...input.country, e.target.value],
+      });
+    }
     setError(
       Validations({
         ...input,
@@ -73,11 +77,10 @@ const PostActivity = () => {
   };
 
   const handleClick = (e) => {
-    e.preventDefault();
-    console.log(input.country);
+    let filterFlag = input.country.filter((fl) => fl !== e);
     setInput({
       ...input,
-      country: [input.country.shift()],
+      country: filterFlag,
     });
   };
 
@@ -101,15 +104,6 @@ const PostActivity = () => {
     disableButton.disabled = true;
   }
 
-  /* 
-console.log("activityName",error.activityName);
-console.log("description",error.description);
-console.log("difficulty",error.difficulty);
-console.log("time",error.time);
-console.log("season",error.season);
-console.log("country",error.country);
-*/
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (
@@ -121,7 +115,6 @@ console.log("country",error.country);
       !error.country
     ) {
       dispatch(createActivity(input));
-      alert("post creado con exito");
       setInput({
         activityName: "",
         description: "",
@@ -139,100 +132,106 @@ console.log("country",error.country);
 
   return (
     <div>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <div>
+      <form onSubmit={(e) => handleSubmit(e)} className={style.form}>
+        <div className={style.div}>
           <label>Activity name: </label>
           <input
             type="text"
             name="activityName"
             value={input.activityName}
             onChange={(e) => handleChange(e)}
+            style={{ width: "200px", height: "20px" }}
           />
           {error.activityName && (
             <p style={{ color: "red" }}>{error.activityName}</p>
           )}
-          <br />
-          <br />
+        </div>
+        <div className={style.div}>
+          <label>Where is located this activity: </label>
+          <select value="default" onChange={(e) => handleSelect(e)}>
+            <option value="default" disabled>
+              Choose any country------{" "}
+            </option>
+            {regions.map((reg) => {
+              return (
+                <optgroup key={reg} label={reg}>
+                  {countries.map((c) => {
+                    if (c.region === reg) {
+                      return (
+                        <option key={c.key} value={c.name}>
+                          {c.name} {c.flagIcon}
+                        </option>
+                      );
+                    }
+                  })}
+                </optgroup>
+              );
+            })}
+          </select>
+          {error.country && <p style={{ color: "red" }}>{error.country}</p>}
         </div>
 
-        <div>
-          <label>Write a little description of {input.activityName}: </label>
-          <input
-            type="text"
-            name="description"
-            value={input.description}
-            onChange={(e) => handleChange(e)}
-          />
-          {error.description && (
-            <p style={{ color: "red" }}>{error.description}</p>
-          )}
-          <br />
-          <br />
-        </div>
-
-        <div>
+        <div className={style.div}>
           <label>How difficult this activity is in a range 1 to 5? : </label>
-        </div>
 
-        <div>
-          <label>
-            1
-            <input
-              type="radio"
-              id="one"
-              name="difficulty"
-              value="1"
-              onChange={(e) => handleCheck(e)}
-            />
-          </label>
-          <label>
-            2
-            <input
-              type="radio"
-              id="two"
-              name="difficulty"
-              value="2"
-              onChange={(e) => handleCheck(e)}
-            />
-          </label>
-          <label>
-            3
-            <input
-              type="radio"
-              id="three"
-              name="difficulty"
-              value="3"
-              onChange={(e) => handleCheck(e)}
-            />
-          </label>
-          <label>
-            4
-            <input
-              type="radio"
-              id="four"
-              name="difficulty"
-              value="4"
-              onChange={(e) => handleCheck(e)}
-            />
-          </label>
-          <label>
-            5
-            <input
-              type="radio"
-              id="five"
-              name="difficulty"
-              value="5"
-              onChange={(e) => handleCheck(e)}
-            />
-          </label>
+          <div>
+            <label style={{ display: "inline-flex", margin: "6px" }}>
+              1
+              <input
+                type="radio"
+                id="one"
+                name="difficulty"
+                value="1"
+                onChange={(e) => handleCheck(e)}
+              />
+            </label>
+            <label style={{ display: "inline-flex", margin: "6px" }}>
+              2
+              <input
+                type="radio"
+                id="two"
+                name="difficulty"
+                value="2"
+                onChange={(e) => handleCheck(e)}
+              />
+            </label>
+            <label style={{ display: "inline-flex", margin: "6px" }}>
+              3
+              <input
+                type="radio"
+                id="three"
+                name="difficulty"
+                value="3"
+                onChange={(e) => handleCheck(e)}
+              />
+            </label>
+            <label style={{ display: "inline-flex", margin: "6px" }}>
+              4
+              <input
+                type="radio"
+                id="four"
+                name="difficulty"
+                value="4"
+                onChange={(e) => handleCheck(e)}
+              />
+            </label>
+            <label style={{ display: "inline-flex", margin: "6px" }}>
+              5
+              <input
+                type="radio"
+                id="five"
+                name="difficulty"
+                value="5"
+                onChange={(e) => handleCheck(e)}
+              />
+            </label>
+          </div>
           {error.difficulty && (
             <p style={{ color: "red" }}>{error.difficulty}</p>
           )}
-          <br />
-          <br />
         </div>
 
-        <div>
+        <div className={style.div}>
           <label>Time in hours spent on this activity: </label>
           <input
             type="text"
@@ -240,14 +239,13 @@ console.log("country",error.country);
             value={input.time}
             onChange={(e) => handleChange(e)}
             placeholder="HH:MM"
+            style={{ width: "200px", height: "20px", textAlign: "center" }}
           />
           {error.time && <p style={{ color: "red" }}>{error.time}</p>}
-          <br />
-          <br />
         </div>
 
-        <div>
-          <label>Season: </label>
+        <div className={style.div}>
+          <label>Best season to this activivity : </label>
           <label>
             <input
               type="radio"
@@ -289,60 +287,47 @@ console.log("country",error.country);
             Spring
           </label>
           {error.season && <p style={{ color: "red" }}>{error.season}</p>}
-          <br />
-          <br />
         </div>
 
-        <div>
-          <label>Where is located this activity: </label>
-          <select value="default" onChange={(e) => handleSelect(e)}>
-            <option value="default" disabled>
-              Choose any country------{" "}
-            </option>
-            {regions.map((reg) => {
-              return (
-                <optgroup key={reg} label={reg}>
-                  {countries.map((c) => {
-                    if (c.region === reg) {
-                      return (
-                        <option key={c.key} value={c.name}>
-                          {c.name} {c.flagIcon}
-                        </option>
-                      );
-                    }
-                  })}
-                </optgroup>
-              );
-            })}
-          </select>
-          {error.country && <p style={{ color: "red" }}>{error.country}</p>}
-          <button onClick={(e) => handleClick(e)}>undo</button>
-          <br />
-          <br />
+        <div className={style.div}>
+          <label>Write a little description of {input.activityName}: </label>
+          <input
+            type="text"
+            name="description"
+            value={input.description}
+            onChange={(e) => handleChange(e)}
+            style={{ width: "500px", height: "60px" }}
+          />
+          {error.description && (
+            <p style={{ color: "red" }}>{error.description}</p>
+          )}
         </div>
 
-        <div>
-          <button type="submit" {...disableButton} onClick={handleDiv}>
+        <div className={style.btn}>
+          <button
+            type="submit"
+            {...disableButton}
+            onClick={handleDiv}
+            className={style.UndoCreateBtn}
+          >
             Create activity
           </button>
-          <br />
-          <br />
         </div>
       </form>
-
-      {/* {showDiv && 
-          <div>
-          
-          
-          
-          </div>
-        } */}
-
-      <div>
+      <div className={style.flag}>
         {input.country.map((c) =>
           countries.map((ele) =>
             ele.name === c ? (
-              <CountryCard id={ele.id} name={ele.name} flag={ele.flag} />
+              <div key={ele.id} className={style.mapFlag}>
+                <button
+                  onClick={() => handleClick(ele.name)}
+                  className={style.delFlag}
+                >
+                  X
+                </button>
+                <img className={style.imgFlag} src={ele.flag} alt={ele.name} />
+                {ele.name}
+              </div>
             ) : (
               ""
             )

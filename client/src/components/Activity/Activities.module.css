@@ -1,32 +1,166 @@
-.cardActtivity{
-    display: flex;
-    height: 100%;
-    width: 80%;
-    margin-left: 10%;
-    align-content: space-around;
-
-}
-.name{
-display: flex;
-    background-color: crimson;
-height: fit-content;
-width: fit-content;
-justify-content: center;
-margin-left: 37%;
+/* 
+* div de toda la pantalla
+*/
+.frame1 {
+  width: 100vw;
+  display: flex;
 }
 
-.buttons{
-display: inline-block;
-justify-content: space-between;
-align-items: center;
-gap: 4rem;
-margin: 1rem;
-width: 15rem;
+/* 
+* div de los botones CRUD de actividades
+*/
 
+.frameBtn {
+  width: 150px;
 }
 
-.buttons:hover, input[type="submit"]:focus {
-        background-color: #fcff39;
-        color: #100dd4;
-
+/* 
+*Botones CRUD de actividades
+*/
+.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  width: 150px;
+  height: 40px;
+  margin-top: 5px;
+  border-radius: 10px;
 }
+
+.buttons:hover,
+input[type="submit"]:focus {
+  background-color: #fcff39;
+  color: #100dd4;
+  font-size: medium;
+}
+
+/* 
+* div derecho de la pantalla donde se muestra la respuesta del btn
+*/
+
+.frameRes {
+  width: 100%;
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-top: 5px;
+}
+
+/* 
+* div derecho de la pantalla para See Activities
+* Name, Country, ID
+* cada actividad
+*/
+
+.activity {
+  width: 100%;
+}
+
+.title {
+  display: flex;
+  justify-content: space-around;
+  border: 2px solid black;
+}
+
+.h2 {
+  width: 100%;
+}
+
+.cardActtivity {
+  width: 100%;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.summary {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.divCountry {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  /* border: 2px solid rgb(200, 255, 0); */
+}
+
+.title2 {
+  display: flex;
+}
+
+/* 
+* div derecho de la pantalla para Create Activity
+*/
+
+.postactiviti {
+  width: 100%;
+}
+
+.div {
+  border: 1px solid #cecccc;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 3px;
+  padding: 1%;
+  gap: 3rem;
+  height: 50px;
+}
+
+.btn {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 3px;
+  padding: 1%;
+  gap: 3rem;
+  height: 50px;
+}
+.flag {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.mapFlag {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 2px solid rgb(2, 119, 109);
+  border-radius: 20px;
+}
+
+.imgFlag {
+  border: 1px solid #333;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.delFlag {
+  background: rgb(221, 39, 39);
+  color: aliceblue;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  width: fit-content;
+  font-size: smaller;
+}
+
+.UndoCreateBtn {
+  font-size: small;
+  width: 150px;
+  height: 28px;
+  border: none;
+  background: rgb(46, 133, 46);
+  color: #cecccc;
+}
+
+/* .UndoCreateBtn:disabled {
+  background: #cecccc;
+  color: rgb(46, 133, 46);
+} */

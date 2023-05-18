@@ -1,15 +1,44 @@
 import style from "./Activities.module.css";
 
-
-const ActivityCard = ({id, name, description, difficulty, time, season, countries}) => {
+const ActivityCard = ({
+  id,
+  name,
+  description,
+  difficulty,
+  time,
+  season,
+  countries,
+}) => {
   return (
     <div className={style.cardActtivity}>
       <details>
-        <summary><b>Name:</b> {name}</summary>
-        <p><b>id:</b> {id}</p>
-        <p><b>Dificultty:</b> {difficulty}, <b>Time:</b> {time}(HH:MM), <b>Season:</b> {season}</p>
-        <p><b>description:</b> {description}</p>
-        <p><b>Countries related with this activity:</b> <ul>{countries.map((c)=> <li key={c.name}>{c.name} {c.flagIcon}</li> )}</ul></p>
+        <summary className={style.summary}>
+          <div className={style.h2}>
+            <b>{name}</b>
+          </div>
+          <div className={style.divCountry}>
+            {countries.map((c) => (
+              <div key={c.name}>
+                {c.name} {c.flagIcon}
+              </div>
+            ))}
+          </div>
+          <div className={style.h2}>{id}</div>
+        </summary>
+        <div className={style.title2}>
+          <div className={style.h2}>
+            <b>Dificultty:</b> {difficulty},
+          </div>
+          <div className={style.h2}>
+            <b>Time:</b> {time}(HH:MM),{" "}
+          </div>
+          <div className={style.h2}>
+            <b>Season:</b> {season}
+          </div>
+        </div>
+        <p>
+          <b>description:</b> {description}
+        </p>
       </details>
     </div>
   );
